@@ -94,8 +94,8 @@
         font-size: 1.2em; /* Enlarge label text */
       }
       .category-filter-group select {
-        padding: 8px 12px; /* Enlarge dropdown */
-        font-size: 1.1em; /* Enlarge dropdown text */
+        padding: 12px 18px; /* Further enlarge dropdown */
+        font-size: 1.3em; /* Further enlarge dropdown text */
         border-radius: 5px;
         border: 1px solid #ccc;
       }
@@ -190,7 +190,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Conversation Starters</h1>
+      <h1>Wildcard - Conversation Starters</h1>
 
       <div class="filter-row">
         <label for="categorySelect">Filter by Category:</label>
@@ -216,6 +216,31 @@
       <div class="question-cards" id="questionCards">
         <p class="loading">Loading questions...</p>
       </div>
+
+      <div
+        class="thank-you-section"
+        style="margin-top: 40px; text-align: center"
+      >
+        <h3>Special Thanks</h3>
+        <p>
+          This project was made possible with the great podcast by Rachel
+          Martin, go check it out!
+        </p>
+        <p>
+          <a
+            href="https://www.npr.org/podcasts/510379/wild-card-with-rachel-martin"
+            >Wild Card with Rachel Martin</a
+          >
+        </p>
+        <p>
+          Also special thanks to redditor @crazitalk for collecting and sharing
+          the questions!
+        </p>
+        <p>
+          If you really enjoy this, please support your local public radio
+          stations!
+        </p>
+      </div>
     </div>
 
     <script>
@@ -224,7 +249,6 @@
         // Set initial state of the toggle and cards
         document.getElementById("flipToggle").checked = false; // Default to closed (cards flipped to back)
         toggleCardFlipDefault(); // Apply initial card state
-        // Removed toggleCategoryFilterVisibility() call as filter should always be visible
       });
 
       function displayCategories(categories) {
@@ -310,8 +334,6 @@
           }
         });
       }
-
-      // Removed toggleCategoryFilterVisibility() as filter should always be visible
     </script>
   </body>
 </html>
