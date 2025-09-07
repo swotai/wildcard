@@ -20,168 +20,29 @@
         text-align: center;
         color: #333;
       }
-      .filter-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-      }
       .category-filter {
-        display: flex;
-        align-items: center;
-        margin: 0 10px;
+        margin-bottom: 20px;
+        text-align: center;
       }
       .category-filter label {
         margin-right: 10px;
         font-weight: bold;
-        font-size: 1.1em; /* Enlarge label text */
       }
-      #categorySelect {
-        padding: 8px 12px;
-        font-size: 1.1em; /* Enlarge dropdown text */
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        min-width: 150px;
-      }
-      .refresh-button {
-        padding: 8px 15px;
-        font-size: 1em;
-        margin-left: 10px;
-        border-radius: 5px;
-        border: none;
-        background-color: #007bff;
-        color: white;
-        cursor: pointer;
-      }
-      .refresh-button:hover {
-        background-color: #0056b3;
-      }
-
-      /* Toggle Switch Styles */
-      .toggle-switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-        margin-right: 15px;
-      }
-      .toggle-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        transition: 0.4s;
-        border-radius: 34px;
-      }
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        transition: 0.4s;
-        border-radius: 50%;
-      }
-      input:checked + .slider {
-        background-color: #2196f3;
-      }
-      input:focus + .slider {
-        box-shadow: 0 0 1px #2196f3;
-      }
-      input:checked + .slider:before {
-        transform: translateX(26px);
-      }
-      .toggle-labels {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 8px;
-        box-sizing: border-box;
-        color: white;
-        font-size: 0.8em;
-        font-weight: bold;
-        pointer-events: none; /* Allow clicks to pass through to the slider */
-      }
-      .toggle-labels span.open {
-        color: #fff;
-      }
-      .toggle-labels span.close {
-        color: #fff;
-      }
-      input:checked + .slider .toggle-labels span.open {
-        color: #fff; /* Active color for 'Open' */
-      }
-      input:not(:checked) + .slider .toggle-labels span.close {
-        color: #fff; /* Active color for 'Close' */
-      }
-
       .question-cards {
-        display: block; /* Single column */
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
         margin-top: 20px;
       }
       .card {
         background: #e9e9e9;
         border-radius: 8px;
-        padding: 0; /* Remove padding from card itself for flip effect */
-        margin: 10px auto; /* Center cards in the column */
-        width: 90%; /* Make cards wider */
-        max-width: 600px; /* Limit max width */
-        min-height: 120px; /* Make cards taller */
+        padding: 15px;
+        margin: 10px;
+        width: 30%;
+        min-width: 250px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         text-align: center;
-        position: relative; /* For flip animation */
-        transform-style: preserve-3d; /* For flip animation */
-        transition: transform 0.6s; /* For flip animation */
-        cursor: pointer;
-      }
-      .card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-      }
-      .card.flipped .card-inner {
-        transform: rotateY(180deg);
-      }
-      .card-front,
-      .card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        -webkit-backface-visibility: hidden; /* Safari */
-        backface-visibility: hidden;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-      .card-front {
-        background-color: #e9e9e9;
-        color: #333;
-      }
-      .card-back {
-        background-color: #f0f0f0;
-        color: #333;
-        transform: rotateY(180deg);
       }
       .card h2 {
         color: #555;
@@ -202,25 +63,11 @@
     <div class="container">
       <h1>Conversation Starters</h1>
 
-      <div class="filter-controls">
-        <label class="toggle-switch">
-          <input type="checkbox" id="cardDisplayToggle" checked />
-          <span class="slider round">
-            <span class="toggle-labels">
-              <span class="open" style="left: 8px">Open</span>
-              <span class="close" style="right: 8px">Close</span>
-            </span>
-          </span>
-        </label>
-        <div class="category-filter">
-          <label for="categorySelect">Filter by Category:</label>
-          <select id="categorySelect" onchange="loadQuestions()">
-            <!-- Categories will be loaded here by JavaScript -->
-          </select>
-          <button class="refresh-button" onclick="loadQuestions()">
-            Refresh
-          </button>
-        </div>
+      <div class="category-filter">
+        <label for="categorySelect">Filter by Category:</label>
+        <select id="categorySelect" onchange="loadQuestions()">
+          <!-- Categories will be loaded here by JavaScript -->
+        </select>
       </div>
 
       <div class="question-cards" id="questionCards">
@@ -229,16 +76,8 @@
     </div>
 
     <script>
-      var cardDisplayOpen = true; // Default to "Open"
-
       document.addEventListener("DOMContentLoaded", function () {
         google.script.run.withSuccessHandler(displayCategories).getCategories();
-
-        var toggle = document.getElementById("cardDisplayToggle");
-        toggle.addEventListener("change", function () {
-          cardDisplayOpen = this.checked;
-          loadQuestions(); // Reload questions to apply new display mode
-        });
       });
 
       function displayCategories(categories) {
@@ -277,30 +116,14 @@
         questions.forEach(function (q, index) {
           var card = document.createElement("div");
           card.className = "card";
-
-          var cardInner = document.createElement("div");
-          cardInner.className = "card-inner";
-
-          var cardFront = document.createElement("div");
-          cardFront.className = "card-front";
-          cardFront.innerHTML =
-            "<h2>" + labels[index] + " - " + q.category + "</h2>";
-
-          var cardBack = document.createElement("div");
-          cardBack.className = "card-back";
-          cardBack.innerHTML = "<p>" + q.question + "</p>";
-
-          cardInner.appendChild(cardFront);
-          cardInner.appendChild(cardBack);
-          card.appendChild(cardInner);
-
-          if (!cardDisplayOpen) {
-            card.classList.add("closed"); // Add class for initial closed state
-            card.addEventListener("click", function () {
-              card.classList.toggle("flipped");
-            });
-          }
-
+          card.innerHTML =
+            "<h2>" +
+            labels[index] +
+            " - " +
+            q.category +
+            "</h2><p>" +
+            q.question +
+            "</p>";
           questionCardsDiv.appendChild(card);
         });
       }
