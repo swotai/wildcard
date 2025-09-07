@@ -54,27 +54,67 @@
         align-items: center; /* Center cards in the column */
         margin-top: 20px;
       }
+      .card-container {
+        perspective: 1000px; /* For 3D effect */
+        margin: 10px 0;
+        width: 80%;
+        max-width: 600px;
+        height: 200px;
+      }
       .card {
-        background: #e9e9e9;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
         border-radius: 8px;
-        padding: 20px; /* Taller cards */
-        margin: 10px 0; /* Adjust margin for single column */
-        width: 80%; /* Make cards wider */
-        max-width: 600px; /* Max width for readability */
-        height: 150px; /* Fixed height for cards */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+      .card.flipped {
+        transform: rotateY(180deg);
+      }
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        border-radius: 8px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .card-front {
+        background: #e9e9e9;
+        color: #333;
+      }
+      .card-back {
+        background: #cccccc;
+        color: #333;
+        transform: rotateY(180deg);
+        font-size: 6em;
+        font-weight: bold;
+      }
+      .card-front h2 {
+        color: #555;
+        margin-top: 0;
+      }
+      .card-front p {
+        font-size: 1.1em;
+        color: #333;
       }
       .card h2 {
         color: #555;
         margin-top: 10;
-        font-size: 2em;
+        font-size: 1.3em;
       }
       .card p {
-        font-size: 2em;
+        font-size: 1.3em;
         color: #333;
       }
       .loading {
@@ -142,9 +182,18 @@
 
         var labels = ["A", "B", "C"];
         questions.forEach(function (q, index) {
+          var cardContainer = document.createElement("div");
+          cardContainer.className = "card-container";
+          cardContainer.onclick = function () {
+            this.querySelector(".card").classList.toggle("flipped");
+          };
+
           var card = document.createElement("div");
           card.className = "card";
-          card.innerHTML =
+
+          var cardFront = document.createElement("div");
+          cardFront.className = "card-front";
+          cardFront.innerHTML =
             "<h2>" +
             labels[index] +
             " - " +
@@ -152,7 +201,15 @@
             "</h2><p>" +
             q.question +
             "</p>";
-          questionCardsDiv.appendChild(card);
+
+          var cardBack = document.createElement("div");
+          cardBack.className = "card-back";
+          cardBack.textContent = labels[index];
+
+          card.appendChild(cardFront);
+          card.appendChild(cardBack);
+          cardContainer.appendChild(card);
+          questionCardsDiv.appendChild(cardContainer);
         });
       }
     </script>
