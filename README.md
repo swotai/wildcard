@@ -20,7 +20,8 @@ Pages**. It replaced an earlier Google Apps Script + Google Sheets version — s
 - **Shareable hands**: the current three questions are always encoded in the URL
   (`?q=12,45,60`), so the browser's native **Share** button (Safari/Chrome) shares
   the exact hand — no custom share button needed
-- **Light / dark mode** (follows the system, with a manual toggle)
+- **Auto / light / dark theme** — cycles from the header button, follows the OS
+  live while on Auto, and remembers your choice
 - Keyboard-accessible, reduced-motion aware, instant load (data is bundled)
 
 ## Develop

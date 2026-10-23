@@ -54,3 +54,22 @@ export function MoonIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+/** Auto / system theme: a circle split half light, half dark. */
+export function SplitCircleIcon({ className }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

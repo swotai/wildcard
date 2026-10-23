@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FilterBar } from "./components/FilterBar";
 import { FlipCard } from "./components/FlipCard";
 import { ThanksFooter } from "./components/ThanksFooter";
-import { MoonIcon, SunIcon } from "./components/icons";
+import { MoonIcon, SplitCircleIcon, SunIcon } from "./components/icons";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import { useTheme } from "./hooks/useTheme";
 import {
@@ -24,7 +24,12 @@ export default function App() {
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const layout: "row" | "accordion" = isDesktop ? "row" : "accordion";
-  const { dark, toggle } = useTheme();
+  const { mode, cycle } = useTheme();
+
+  const themeLabel =
+    mode === "auto" ? "Auto (system)" : mode === "dark" ? "Dark" : "Light";
+  const nextThemeLabel =
+    mode === "auto" ? "Light" : mode === "light" ? "Dark" : "Auto";
 
   // Keep the URL in sync so the browser's native Share button shares this hand.
   useEffect(() => {
@@ -82,19 +87,22 @@ export default function App() {
               </span>
             </h1>
             <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
-              Pick one of three.
+              Pick one of three. Share your story.
             </p>
           </div>
           <button
             type="button"
-            onClick={toggle}
-            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+            onClick={cycle}
+            aria-label={`Theme: ${themeLabel}. Switch to ${nextThemeLabel}.`}
+            title={`Theme: ${themeLabel} — click for ${nextThemeLabel}`}
             className="rounded-full p-2.5 text-zinc-600 ring-1 ring-zinc-200 transition-colors hover:bg-zinc-200/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-zinc-300 dark:ring-zinc-700 dark:hover:bg-zinc-800"
           >
-            {dark ? (
-              <SunIcon className="h-5 w-5" />
-            ) : (
+            {mode === "auto" ? (
+              <SplitCircleIcon className="h-5 w-5" />
+            ) : mode === "dark" ? (
               <MoonIcon className="h-5 w-5" />
+            ) : (
+              <SunIcon className="h-5 w-5" />
             )}
           </button>
         </header>
