@@ -1,2 +1,25 @@
+# deps & build
+node_modules/
+dist/
+.vite/
+
+# generated question data (rebuilt from the CSV by predev/prebuild)
+src/data/questions.json
+
+# python tooling / data-extraction venv
 venv/
 .venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# misc
+.DS_Store
+.wrangler/
+.env
+.env.*
+
+# local npm cache used by sandboxed installs
+.npm-cache/
+.pw-browsers/
+
+.pi/
