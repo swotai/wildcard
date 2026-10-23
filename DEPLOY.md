@@ -11,6 +11,7 @@ almost certainly how your Hugo site is set up).
 ## Option A — Cloudflare Pages via Git (recommended)
 
 1. Push this repo to GitHub (e.g. `taidennis/wildcard`).
+    - Make sure that git's `Cloudfalre Workers and Pages` application has access to the repo. Configure it [here](https://github.com/settings/installations)
 2. In the Cloudflare dashboard go to **Workers & Pages → Create → Pages →
    Connect to Git** and pick the repo.
 3. Configure the build:
