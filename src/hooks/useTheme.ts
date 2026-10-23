@@ -40,6 +40,10 @@ export function useTheme() {
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
+    // Tint Safari's own chrome (address bar / status area) to match the theme.
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", dark ? "#09090b" : "#f4f4f5");
   }, [dark]);
 
   useEffect(() => {

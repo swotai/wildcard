@@ -14,11 +14,11 @@ almost certainly how your Hugo site is set up).
 2. In the Cloudflare dashboard go to **Workers & Pages → Create → Pages →
    Connect to Git** and pick the repo.
 3. Configure the build:
-   - **Framework preset:** `Vite`
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - **Root directory:** `/` (leave default)
-   - **Node version:** any modern LTS (the repo uses Vite 7 / Node 20+)
+    - **Framework preset:** `Vite`
+    - **Build command:** `npm run build`
+    - **Build output directory:** `dist`
+    - **Root directory:** `/` (leave default)
+    - **Node version:** any modern LTS (the repo uses Vite 7 / Node 20+)
 4. Click **Save and Deploy**. First build takes ~1 minute.
 5. From now on: **every `git push` automatically rebuilds and redeploys.** No
    Actions, no manual step.
@@ -98,9 +98,9 @@ Until then, keep it static.
 
 ## Checklist
 
-- [ ] Repo on GitHub
-- [ ] Pages project connected (build `npm run build`, output `dist`)
-- [ ] First deploy green
-- [ ] `wildcard.taidennis.us` added as a custom domain
-- [ ] `wildcard` URL serves over HTTPS and shows the app
-- [ ] Old Google Sites wrap-up removed / pointed at Pages
+- [x] Repo on GitHub
+- [x] Pages project connected (build `npm run build`, output `dist`)
+- [x] First deploy green
+- [x] `wildcard.taidennis.us` added as a custom domain
+- [x] `wildcard` URL serves over HTTPS and shows the app
+- [x] Old Google Sites wrap-up removed / pointed at Pages

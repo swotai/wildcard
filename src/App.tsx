@@ -76,8 +76,8 @@ export default function App() {
       : "Click a card to reveal it, or use the toggle to show all three.";
 
   return (
-    <div className="min-h-[100svh] bg-zinc-100 text-zinc-900 transition-colors dark:bg-zinc-950 dark:text-zinc-100">
-      <div className="mx-auto flex min-h-[100svh] max-w-5xl flex-col gap-5 px-4 py-6 sm:px-6 sm:py-8">
+    <div className="min-h-dvh bg-zinc-100 text-zinc-900 transition-colors dark:bg-zinc-950 dark:text-zinc-100">
+      <div className="mx-auto flex min-h-dvh max-w-5xl flex-col gap-5 px-4 py-6 sm:px-6 sm:py-8">
         <header className="flex items-center justify-between gap-4">
           <div>
             <h1 className="text-xl font-bold tracking-tight sm:text-2xl">

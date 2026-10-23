@@ -15,7 +15,23 @@ body,
   height: 100%;
 }
 
+/* Paint the root canvas too. On real iPhones the dynamic toolbar + rubber-band
+   overscroll expose the html/body background; leaving it default shows white
+   bars in dark mode. `color-scheme` also darkens Safari's own UI (bars,
+   form controls, scrollbars). */
+:root {
+  color-scheme: light;
+  background-color: #f4f4f5; /* zinc-100 */
+}
+
+html.dark {
+  color-scheme: dark;
+  background-color: #09090b; /* zinc-950 */
+}
+
 body {
+  min-height: 100dvh;
+  background-color: inherit;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overscroll-behavior-y: none;
