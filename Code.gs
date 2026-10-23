@@ -1,10 +1,12 @@
 function doGet() {
-    return HtmlService.createTemplateFromFile('index').evaluate();
+    return HtmlService.createTemplateFromFile('index')
+        .evaluate()
+        .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 function getQuestions(selectedCategory) {
-    var spreadsheetId = 'YOUR_SPREADSHEET_ID_HERE'; // Replace with your actual spreadsheet ID
-    var sheetName = 'Sheet1'; // Replace with your actual sheet name
+    var spreadsheetId = '1QXG8N5dKyg_GWOUXYOqCn9zGoXXNQ_qwDcaLGIt45_Y'; // Replace with your actual spreadsheet ID
+    var sheetName = 'Questions'; // Replace with your actual sheet name
     var sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName(sheetName);
     var data = sheet.getDataRange().getValues();
 
@@ -26,8 +28,8 @@ function getQuestions(selectedCategory) {
 }
 
 function getCategories() {
-    var spreadsheetId = 'YOUR_SPREADSHEET_ID_HERE'; // Replace with your actual spreadsheet ID
-    var sheetName = 'Sheet1'; // Replace with your actual sheet name
+    var spreadsheetId = '1QXG8N5dKyg_GWOUXYOqCn9zGoXXNQ_qwDcaLGIt45_Y'; // Replace with your actual spreadsheet ID
+    var sheetName = 'Questions'; // Replace with your actual sheet name
     var sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName(sheetName);
     var data = sheet.getDataRange().getValues();
 
